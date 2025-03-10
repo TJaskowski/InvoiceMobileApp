@@ -13,6 +13,15 @@ class InvoicesView extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              color: Colors.black,
+              onPressed: () {
+                print('Search button clicked');
+              },
+            ),
+          ],
           title: Text('Invoices'),
           backgroundColor: Colors.blueAccent.shade200,
           bottom: TabBar(

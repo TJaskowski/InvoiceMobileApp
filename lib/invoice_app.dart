@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:invoice_app_flutter/views/add_client.dart';
 import 'package:invoice_app_flutter/views/add_invoice.dart';
+import 'package:invoice_app_flutter/views/add_product.dart';
 import 'package:invoice_app_flutter/views/clients.dart';
 import 'package:invoice_app_flutter/views/home.dart';
 import 'package:invoice_app_flutter/views/invoices.dart';
@@ -20,6 +22,8 @@ class InvoiceApp extends StatelessWidget {
         '/products': (context) => Products(),
         '/settings': (context) => Settings(),
         '/add_invoice': (context) => AddInvoice(),
+        '/add_client': (context) => AddClient(),
+        '/add_product': (context) => AddProduct(),
       },
       title: 'InvoiceApp',
       theme: ThemeData(
