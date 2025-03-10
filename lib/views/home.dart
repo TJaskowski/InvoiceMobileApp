@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:invoice_app_flutter/views/invoices.dart';
+import 'package:invoice_app_flutter/views/invoices/invoices.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

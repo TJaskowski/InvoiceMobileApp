@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:invoice_app_flutter/views/add_client.dart';
-import 'package:invoice_app_flutter/views/add_invoice.dart';
-import 'package:invoice_app_flutter/views/add_product.dart';
-import 'package:invoice_app_flutter/views/clients.dart';
+import 'package:invoice_app_flutter/views/clients/add_client.dart';
+import 'package:invoice_app_flutter/views/invoices/add_invoice.dart';
+import 'package:invoice_app_flutter/views/products/add_product.dart';
+import 'package:invoice_app_flutter/views/clients/clients.dart';
 import 'package:invoice_app_flutter/views/home.dart';
-import 'package:invoice_app_flutter/views/invoices.dart';
-import 'package:invoice_app_flutter/views/products.dart';
+import 'package:invoice_app_flutter/views/invoices/invoices.dart';
+import 'package:invoice_app_flutter/views/products/products.dart';
 import 'package:invoice_app_flutter/views/settings.dart';
 
 class InvoiceApp extends StatelessWidget {
