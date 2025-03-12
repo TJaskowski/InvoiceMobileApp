@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
 
@@ -10,6 +10,7 @@ class NewInvoice extends StatelessWidget {
     return ListView(
       children: [
         Card(
+          color: Colors.blueGrey[200],
           child: ListTile(
             title: Text('INVNR001'),
             subtitle: ListTile(
@@ -25,6 +26,23 @@ class NewInvoice extends StatelessWidget {
           ),
         ),
         Card(
+          color: Colors.blueGrey[200],
+          child: ListTile(
+            title: Text('Customer'),
+            subtitle: ListTile(
+              title: Text('Client name'),
+              onTap: () {
+                print('Client name clicked');
+              },
+            ),
+            trailing: Text("${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}"),
+            onTap: () {
+              print('Whole tile clicked');
+            },
+          ),
+        ),
+        Card(
+          color: Colors.blueGrey[200],
           child: ListTile(
             leading: IconButton(
               icon: Icon(Icons.monetization_on),
