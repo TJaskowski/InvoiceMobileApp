@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:invoice_app_flutter/widgets/invoice_number.dart';
 
 class NewInvoice extends StatelessWidget {
   const NewInvoice({super.key});
@@ -19,9 +20,14 @@ class NewInvoice extends StatelessWidget {
                 print('Client name clicked');
               },
             ),
-            trailing: Text("${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}"),
+            trailing: Text(
+                "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}"),
             onTap: () {
-              print('Whole tile clicked');
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return InvoiceNumber();
+                  });
             },
           ),
         ),
@@ -35,7 +41,8 @@ class NewInvoice extends StatelessWidget {
                 print('Client name clicked');
               },
             ),
-            trailing: Text("${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}"),
+            trailing: Text(
+                "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}"),
             onTap: () {
               print('Whole tile clicked');
             },
@@ -57,9 +64,12 @@ class NewInvoice extends StatelessWidget {
                 print('Client name clicked');
               },
             ),
-            trailing: Checkbox(value: false, onChanged: (value) {value = true;
-              print('Checkbox clicked');
-            }),
+            trailing: Checkbox(
+                value: false,
+                onChanged: (value) {
+                  value = true;
+                  print('Checkbox clicked');
+                }),
             onTap: () {
               print('Whole tile clicked');
             },
