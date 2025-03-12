@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:invoice_app_flutter/widgets/new_invoice.dart';
 
 class AddInvoice extends StatelessWidget {
   const AddInvoice({super.key});
@@ -8,7 +9,7 @@ class AddInvoice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      initialIndex: 1,
+      initialIndex: 0,
       length: 2,
       child: Scaffold(
         appBar: AppBar(
@@ -26,7 +27,7 @@ class AddInvoice extends StatelessWidget {
         ),
         body: TabBarView(children: 
           [
-            Center(child: Text('Create a new invoice here')),
+            NewInvoice(),
             Center(child: Text('Preview of the invoice')),
           ],
         ),));
