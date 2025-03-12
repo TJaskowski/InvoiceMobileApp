@@ -1,19 +1,23 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:invoice_app_flutter/widgets/invoice_number.dart';
+import 'package:invoice_app_flutter/providers/invoice_provider.dart';
 
-class NewInvoice extends StatelessWidget {
+class NewInvoice extends ConsumerWidget {
   const NewInvoice({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    final invoiceNumber = ref.watch(invoiceProvider).invoiceNumber;
     return ListView(
       children: [
         Card(
           color: Colors.blueGrey[200],
           child: ListTile(
-            title: Text('INVNR001'),
+            title: Text(invoiceNumber),
             subtitle: ListTile(
               title: Text('Client name'),
               onTap: () {

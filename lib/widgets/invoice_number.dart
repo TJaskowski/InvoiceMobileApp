@@ -29,6 +29,7 @@ class _InvoiceNumberState extends State<InvoiceNumber> {
 
   void saveInvoiceNumber() {
     print('Invoice number: ${_invoiceNumberController.text}');
+    
     Navigator.of(context).pop();
   }
 
