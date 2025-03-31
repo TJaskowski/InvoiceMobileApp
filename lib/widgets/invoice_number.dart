@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:invoice_app_flutter/providers/invoice_provider.dart';
 
-class InvoiceNumber extends StatefulWidget {
-  const InvoiceNumber({super.key});
+class InvoiceNumberDialog extends ConsumerStatefulWidget {
+  const InvoiceNumberDialog({super.key});
 
   @override
-  State<InvoiceNumber> createState() => _InvoiceNumberState();
+  ConsumerState<InvoiceNumberDialog> createState() => _InvoiceNumberDialogState();
 }
 
-class _InvoiceNumberState extends State<InvoiceNumber> {
+class _InvoiceNumberDialogState extends ConsumerState<InvoiceNumberDialog> {
   final TextEditingController _invoiceNumberController =
       TextEditingController();
   final TextEditingController _invoiceDateController = TextEditingController();
@@ -28,9 +30,23 @@ class _InvoiceNumberState extends State<InvoiceNumber> {
   }
 
   void saveInvoiceNumber() {
-    print('Invoice number: ${_invoiceNumberController.text}');
-    
+    if(!_invoiceNumberController.text.isEmpty){
+      ref.read(invoiceProvider.notifier).setInvoiceNumber(_invoiceNumberController.text);
+    }
     Navigator.of(context).pop();
+        if (_invoiceNumberController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Please enter an invoice number.'),
+        ),
+      );
+      return;
+    }
+  }
+
+  void saveInvoiceDate(DateTime? date) {
+      ref.read(invoiceProvider.notifier).setInvoiceDate(date ?? DateTime.now());
+      _invoiceDateController.text = DateFormat('yyyy-MM-dd').format(date!);
   }
 
   @override
@@ -42,7 +58,7 @@ class _InvoiceNumberState extends State<InvoiceNumber> {
           TextField(
             controller: _invoiceNumberController,
             decoration: InputDecoration(
-              labelText: 'Invoice Number',
+              labelText: ref.read(invoiceProvider).invoiceNumber,
             ),
           ),
           TextField(
@@ -58,11 +74,7 @@ class _InvoiceNumberState extends State<InvoiceNumber> {
                 lastDate: DateTime(2101),
               );
               if (pickedDate != null && pickedDate != _selectedDate) {
-                setState(() {
-                  _selectedDate = pickedDate;
-                  _invoiceDateController.text =
-                      DateFormat('yyyy-MM-dd').format(pickedDate);
-                });
+                saveInvoiceDate(pickedDate);
               }
             },
           ),

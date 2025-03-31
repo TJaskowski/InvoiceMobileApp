@@ -12,25 +12,21 @@ class NewInvoice extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     final invoiceNumber = ref.watch(invoiceProvider).invoiceNumber;
+    final invoiceDate = ref.watch(invoiceProvider).invoiceDate;
     return ListView(
       children: [
         Card(
           color: Colors.blueGrey[200],
           child: ListTile(
             title: Text(invoiceNumber),
-            subtitle: ListTile(
-              title: Text('Client name'),
-              onTap: () {
-                print('Client name clicked');
-              },
-            ),
+           
             trailing: Text(
-                "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}"),
+                "${invoiceDate.day}/${invoiceDate.month}/${invoiceDate.year}"),
             onTap: () {
               showDialog(
                   context: context,
                   builder: (context) {
-                    return InvoiceNumber();
+                    return InvoiceNumberDialog();
                   });
             },
           ),
@@ -71,7 +67,7 @@ class NewInvoice extends ConsumerWidget {
             trailing: Checkbox(
                 value: false,
                 onChanged: (value) {
-                  value = true;
+          
                   print('Checkbox clicked');
                 }),
             onTap: () {
