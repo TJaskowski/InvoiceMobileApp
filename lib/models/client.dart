@@ -1,5 +1,6 @@
 class Client {
   String name;
+  String? taxId;
   String address;
   String city;
   String? zipCode;
@@ -9,6 +10,7 @@ class Client {
 
   Client({
     required this.name,
+    required this.taxId,
     required this.address,
     required this.city,
     zipCode,
@@ -19,7 +21,7 @@ class Client {
 
  Client copyWith({
     String? name,
-
+    String? taxId,
     String? address,
     String? city,
     String? zipCode,
@@ -29,6 +31,7 @@ class Client {
   }) {
     return Client(
       name: name ?? this.name,
+      taxId: taxId ?? this.taxId,
       address: address ?? this.address,
       city: city ?? this.city,
       zipCode: zipCode ?? this.zipCode,
