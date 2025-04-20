@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:invoice_app_flutter/utilities/pdf_generator.dart';
 import 'package:invoice_app_flutter/widgets/invoice_number.dart';
 import 'package:invoice_app_flutter/providers/invoice_provider.dart';
 
@@ -45,6 +46,7 @@ class NewInvoice extends ConsumerWidget {
                 "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}"),
             onTap: () {
               print('Whole tile clicked');
+              PdfGenerator().generatePdf(context);
             },
           ),
         ),
