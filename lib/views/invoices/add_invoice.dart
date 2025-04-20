@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:invoice_app_flutter/utilities/pdf_invoice.dart';
 import 'package:invoice_app_flutter/widgets/new_invoice.dart';
 
 class AddInvoice extends StatelessWidget {
@@ -28,7 +29,7 @@ class AddInvoice extends StatelessWidget {
         body: TabBarView(children: 
           [
             NewInvoice(),
-            Center(child: Text('Preview of the invoice')),
+            PdfInvoice(),
           ],
         ),));
   }

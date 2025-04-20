@@ -46,7 +46,7 @@ class NewInvoice extends ConsumerWidget {
                 "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}"),
             onTap: () {
               print('Whole tile clicked');
-              PdfGenerator().generatePdf(context);
+            //  PdfGenerator().generatePdf(context);
             },
           ),
         ),
