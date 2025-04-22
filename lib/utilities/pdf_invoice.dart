@@ -28,6 +28,15 @@ class PdfInvoice extends ConsumerWidget{
     return pdf;
   }
     return PdfPreview(
+      actionBarTheme: PdfActionBarTheme(
+        backgroundColor: Colors.blueAccent.shade200,
+        iconColor: Colors.white,
+      ),
+      canChangeOrientation: false,
+      canChangePageFormat: false,
+      canDebug: false,
+      //useActions: false, // Uncomment this line to disable the action bar
+      //TODO: Is this the best way to show the invoice preview?
     build: (format) => generatePdf().then((pdf) => pdf.save()),
   );
   }
