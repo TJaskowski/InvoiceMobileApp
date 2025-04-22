@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:invoice_app_flutter/utilities/pdf_invoice.dart';
-import 'package:invoice_app_flutter/widgets/new_invoice.dart';
+import 'package:invoice_app_flutter/widgets/new_invoice/new_invoice.dart';
 
 class AddInvoice extends StatelessWidget {
   const AddInvoice({super.key});

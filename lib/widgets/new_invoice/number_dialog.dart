@@ -3,14 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:invoice_app_flutter/providers/invoice_provider.dart';
 
-class InvoiceNumberDialog extends ConsumerStatefulWidget {
-  const InvoiceNumberDialog({super.key});
+class NumberDialog extends ConsumerStatefulWidget {
+  const NumberDialog({super.key});
 
   @override
-  ConsumerState<InvoiceNumberDialog> createState() => _InvoiceNumberDialogState();
+  ConsumerState<NumberDialog> createState() => _InvoiceNumberDialogState();
 }
 
-class _InvoiceNumberDialogState extends ConsumerState<InvoiceNumberDialog> {
+class _InvoiceNumberDialogState extends ConsumerState<NumberDialog> {
   final TextEditingController _invoiceNumberController =
       TextEditingController();
   final TextEditingController _invoiceDateController = TextEditingController();
