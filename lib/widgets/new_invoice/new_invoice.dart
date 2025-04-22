@@ -15,10 +15,11 @@ class NewInvoice extends ConsumerWidget {
 
     final invoiceNumber = ref.watch(invoiceProvider).invoiceNumber;
     final invoiceDate = ref.watch(invoiceProvider).invoiceDate;
+    final customer =  ref.watch(invoiceProvider).client ;
     return ListView(
       children: [
         NumberBar(invoiceNumber: invoiceNumber, invoiceDate: invoiceDate),
-        CustomerBar(customerName: "Client name"),//TODO: send the client name from the provider
+        CustomerBar(customerName: customer?.name ?? "Customer not added"),//TODO: send the client name from the provider
         Card(
           color: Colors.blueGrey[200],
           child: ListTile(
