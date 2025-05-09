@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:invoice_app_flutter/providers/client_provider.dart';
 import 'package:invoice_app_flutter/widgets/new_invoice/customer_bar.dart';
 import 'package:invoice_app_flutter/widgets/new_invoice/number_bar.dart';
-import 'package:invoice_app_flutter/widgets/new_invoice/number_dialog.dart';
 import 'package:invoice_app_flutter/providers/invoice_provider.dart';
 
 class NewInvoice extends ConsumerWidget {
@@ -15,11 +15,13 @@ class NewInvoice extends ConsumerWidget {
 
     final invoiceNumber = ref.watch(invoiceProvider).invoiceNumber;
     final invoiceDate = ref.watch(invoiceProvider).invoiceDate;
-    final customer =  ref.watch(invoiceProvider).client ;
+    final customer = ref.watch(clientProvider); 
+   // final customer =  ref.watch(invoiceProvider).client ;
     return ListView(
       children: [
         NumberBar(invoiceNumber: invoiceNumber, invoiceDate: invoiceDate),
-        CustomerBar(customerName: customer?.name ?? "Customer not added"),//TODO: send the client name from the provider
+        CustomerBar(customerName: customer.name),//TODO: send the client name from the provider 
+        // to navigate to client page use: Navigator.pushNamed(context, '/clients');
         Card(
           color: Colors.blueGrey[200],
           child: ListTile(

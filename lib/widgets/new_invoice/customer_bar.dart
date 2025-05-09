@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invoice_app_flutter/views/clients/clients_dialog.dart';
 
 class CustomerBar extends StatelessWidget {
   final String customerName;
@@ -18,7 +19,9 @@ class CustomerBar extends StatelessWidget {
             trailing: IconButton(
               icon: const Icon(Icons.edit),
               onPressed: () {
-                print('Edit icon clicked');
+                showDialog(context: context, builder: (context) {
+                  return const ClientsDialog();
+                });
               },
             ),
            

@@ -30,13 +30,13 @@ class _InvoiceNumberDialogState extends ConsumerState<NumberDialog> {
   }
 
   void saveInvoiceNumber() {
-    if(!_invoiceNumberController.text.isEmpty){
+    if(_invoiceNumberController.text.isNotEmpty){
       ref.read(invoiceProvider.notifier).setInvoiceNumber(_invoiceNumberController.text);
     }
     Navigator.of(context).pop();
         if (_invoiceNumberController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Please enter an invoice number.'),
         ),
       );
@@ -52,7 +52,7 @@ class _InvoiceNumberDialogState extends ConsumerState<NumberDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Invoice Number'),
+      title: const Text('Invoice Number'),
       content: Column(
         children: [
           TextField(
@@ -63,7 +63,7 @@ class _InvoiceNumberDialogState extends ConsumerState<NumberDialog> {
           ),
           TextField(
             controller: _invoiceDateController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Invoice Date',
             ),
             onTap: () async {
@@ -85,7 +85,7 @@ class _InvoiceNumberDialogState extends ConsumerState<NumberDialog> {
           onPressed: () {
             saveInvoiceNumber();
           },
-          child: Text('Save'),
+          child: const Text('Save'),
         ),
       ],
     );

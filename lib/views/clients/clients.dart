@@ -1,13 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:invoice_app_flutter/views/clients/clients_listview.dart';
 import 'package:invoice_app_flutter/widgets/custom_button.dart';
 
 class Clients extends StatelessWidget {
+  
   const Clients({super.key});
 
   @override
   Widget build(BuildContext context) {
+   
     return  Scaffold(
         appBar: AppBar(
           actions: [
@@ -22,7 +26,7 @@ class Clients extends StatelessWidget {
           title: Text('Clients'),
           backgroundColor: Colors.blueAccent.shade200,
         ),
-        body: Center(child: Text('List of all clients')),
+        body: ClientsList(),
         floatingActionButton: CustomButton(onPressed: () {
           Navigator.pushNamed(context, '/add_client');
         },

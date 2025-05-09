@@ -16,6 +16,10 @@ class ClientNotifier extends Notifier<Client> {
     );
   }
 
+  void setClient(Client client) {
+    state = client;
+  }
+
   void setName(String name) {
     state = state.copyWith(name: name);
   }
