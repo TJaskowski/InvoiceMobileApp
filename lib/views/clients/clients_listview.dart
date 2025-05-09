@@ -25,6 +25,7 @@ class ClientsList extends ConsumerWidget {
             trailing: Text(client.taxId ?? "No tax ID"),
             onTap: () {
               ref.read(clientProvider.notifier).setClient(client);
+              Navigator.of(context).pop();
               print(ref.read(clientProvider).name );
               // Handle client tap
             },

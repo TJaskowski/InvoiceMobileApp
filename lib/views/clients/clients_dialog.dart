@@ -11,8 +11,16 @@ class ClientsDialog extends ConsumerWidget {
       title: const Text('Select Client'),
       content: SizedBox(
         width: double.maxFinite,
-        child: const ClientsList(),
+        child: const ClientsList(), 
       ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop(); // Close the dialog
+          },
+          child: const Text('Close'),
+        ),
+      ],
     );
  
   }
