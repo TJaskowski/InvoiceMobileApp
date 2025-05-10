@@ -22,5 +22,8 @@ class InvoiceNotifier extends Notifier<Invoice> {
   void setClient(Client client) {
     state = state.copyWith(client: client);
   }
+  // void addProduct(Product product) {
+  //   state = state.copyWith(products: [...state.products, product]);
+  // }
 
 }
