@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:invoice_app_flutter/views/clients/clients_listview.dart';
 import 'package:invoice_app_flutter/widgets/custom_appbar.dart';
 import 'package:invoice_app_flutter/widgets/custom_button.dart';

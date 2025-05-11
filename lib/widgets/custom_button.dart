@@ -13,8 +13,21 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(30),
           ),
           onPressed: onPressed,
-          child: Icon(Icons.add),
-          backgroundColor: Colors.blueAccent.shade200,
+          child: Ink(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.blueAccent.shade200, 
+                  Color.fromARGB(255, 159, 212, 255), 
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Center(child: Icon(Icons.add))),
+          backgroundColor: Colors.transparent,
+
           );
   }
 }

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:invoice_app_flutter/utilities/pdf_invoice.dart';
+import 'package:invoice_app_flutter/widgets/custom_appbar.dart';
 import 'package:invoice_app_flutter/widgets/new_invoice/new_invoice.dart';
 
 class AddInvoice extends StatelessWidget {
@@ -13,9 +14,9 @@ class AddInvoice extends StatelessWidget {
       initialIndex: 0,
       length: 2,
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('Invoice'),
-          backgroundColor: Colors.blueAccent.shade200,
+        appBar: CustomAppbar(
+          centerTitle: true,
+          title:'Invoice',
           bottom: TabBar(
             labelColor: Colors.white,
             unselectedLabelColor: Colors.black,
