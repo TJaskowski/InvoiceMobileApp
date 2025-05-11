@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:invoice_app_flutter/views/clients/clients_listview.dart';
+import 'package:invoice_app_flutter/widgets/custom_appbar.dart';
 import 'package:invoice_app_flutter/widgets/custom_button.dart';
 
 class Clients extends StatelessWidget {
@@ -13,7 +14,8 @@ class Clients extends StatelessWidget {
   Widget build(BuildContext context) {
    
     return  Scaffold(
-        appBar: AppBar(
+        appBar: CustomAppbar(
+          centerTitle: true,
           actions: [
             IconButton(
               icon: Icon(Icons.search),
@@ -23,8 +25,7 @@ class Clients extends StatelessWidget {
               },
             ),
           ],
-          title: Text('Clients'),
-          backgroundColor: Colors.blueAccent.shade200,
+          title: 'Clients',
         ),
         body: ClientsList(),
         floatingActionButton: CustomButton(onPressed: () {

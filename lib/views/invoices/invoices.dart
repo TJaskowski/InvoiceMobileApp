@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:invoice_app_flutter/widgets/custom_appbar.dart';
 import 'package:invoice_app_flutter/widgets/custom_button.dart';
 
 class InvoicesView extends StatelessWidget {
@@ -12,7 +13,9 @@ class InvoicesView extends StatelessWidget {
       initialIndex: 0,
       length: 3,
       child: Scaffold(
-        appBar: AppBar(
+        appBar: 
+        CustomAppbar(
+          centerTitle: true,
           actions: [
             IconButton(
               icon: Icon(Icons.search),
@@ -22,8 +25,7 @@ class InvoicesView extends StatelessWidget {
               },
             ),
           ],
-          title: Text('Invoices'),
-          backgroundColor: Colors.blueAccent.shade200,
+          title: 'Invoices',
           bottom: TabBar(
             labelColor: Colors.white,
             unselectedLabelColor: Colors.black,

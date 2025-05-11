@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:invoice_app_flutter/views/invoices/invoices.dart';
+import 'package:invoice_app_flutter/widgets/custom_appbar.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -7,18 +7,26 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('InvoiceApp'),
-        backgroundColor: Colors.blueAccent.shade200,
-      ),
+      appBar: CustomAppbar(
+        title: 'InvoiceApp',
+        centerTitle: true, 
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(kTextTabBarHeight), 
+          child: Container()), ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            const DrawerHeader( 
+             DrawerHeader( 
               decoration: BoxDecoration(
-                color: Colors.blueAccent,
+                 gradient: LinearGradient(
+              colors: [
+                Colors.blueAccent.shade200, 
+                Color.fromARGB(255, 159, 212, 255), 
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
               ),
               child: Text('InvoiceApp'),
             ),

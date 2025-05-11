@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:invoice_app_flutter/providers/product_provider.dart';
+import 'package:invoice_app_flutter/widgets/custom_appbar.dart';
 import 'package:invoice_app_flutter/widgets/custom_button.dart';
 
 class Products extends ConsumerWidget {
@@ -10,7 +11,8 @@ class Products extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final products = ref.watch(productProvider);
     return Scaffold(
-      appBar: AppBar( 
+      appBar: CustomAppbar(
+        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
@@ -20,8 +22,7 @@ class Products extends ConsumerWidget {
             },
           ),
         ],
-        title: const Text('Products'),
-        backgroundColor: Colors.blueAccent.shade200,
+        title: 'Products',
       ),
       body: ListView.builder(
         itemCount: products.length,

@@ -5,28 +5,36 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/pdf.dart';
 import 'package:printing/printing.dart';
 
-class PdfInvoice extends ConsumerWidget{
+class PdfInvoice extends ConsumerWidget {
   const PdfInvoice({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-     Future<pw.Document> generatePdf() async {
-    final invoice = ref.read(invoiceProvider);
-    final pdf = pw.Document();
-    pdf.addPage(
-      pw.Page(
-        pageFormat: PdfPageFormat.a4,
-        build: (pw.Context context) {
-          return pw.Column(
-            children: [
-              pw.Text('Invoice Number: ${invoice.invoiceNumber}'),
-              pw.Text('Invoice Date: ${invoice.invoiceDate.day}/${invoice.invoiceDate.month}/${invoice.invoiceDate.year}'),
-            ],
-          );
-        },
-      ),
-    );
-    return pdf;
-  }
+    Future<pw.Document> generatePdf() async {
+      final invoice = ref.read(invoiceProvider);
+      final pdf = pw.Document();
+      pdf.addPage(
+        pw.Page(
+          pageFormat: PdfPageFormat.a4,
+          build: (pw.Context context) {
+            return pw.Column(
+              children: [
+                pw.Row(
+                  mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+                  children: [
+                  pw.Text('Invoice Number: ${invoice.invoiceNumber}'),
+                  pw.Text(
+                      'Invoice Date: ${invoice.invoiceDate.day}/${invoice.invoiceDate.month}/${invoice.invoiceDate.year}'),
+                ]),
+                pw.SizedBox(height: 20),
+                //pw.Text('Customer Name: ${invoice.client?.name ?? 'Customer not selected' }'), // TODO make it dynamic
+              ],
+            );
+          },
+        ),
+      );
+      return pdf;
+    }
+
     return PdfPreview(
       actionBarTheme: PdfActionBarTheme(
         backgroundColor: Colors.blueAccent.shade200,
@@ -37,8 +45,7 @@ class PdfInvoice extends ConsumerWidget{
       canDebug: false,
       //useActions: false, // Uncomment this line to disable the action bar
       //TODO: Is this the best way to show the invoice preview?
-    build: (format) => generatePdf().then((pdf) => pdf.save()),
-  );
+      build: (format) => generatePdf().then((pdf) => pdf.save()),
+    );
   }
 }
-
