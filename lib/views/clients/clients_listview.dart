@@ -16,7 +16,7 @@ class ClientsList extends ConsumerWidget {
       itemBuilder: (context, index) {
         final client = clients[index];
         return Card(
-          color: Colors.blueGrey[200],
+          color: Colors.blueGrey[50],
           child: ListTile(
             title: Text(client.name,
                 style: const TextStyle(

@@ -54,6 +54,7 @@ class _InvoiceNumberDialogState extends ConsumerState<NumberDialog> {
     return AlertDialog(
       title: const Text('Invoice Number'),
       content: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           TextField(
             controller: _invoiceNumberController,

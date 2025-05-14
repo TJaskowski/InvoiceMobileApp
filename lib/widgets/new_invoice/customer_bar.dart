@@ -7,26 +7,39 @@ class CustomerBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Card(
-          color: Colors.blueGrey[200],
-          child: ListTile(
-            title: RichText(text: TextSpan(
-              children: [
-                const TextSpan(text: "Invoice to:  ", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, )),
-                TextSpan(text: customerName, style: const TextStyle(color: Colors.black)),
-              ],
-            )),
-            trailing: IconButton(
-              icon: const Icon(Icons.edit),
-              onPressed: () {
-                showDialog(context: context, builder: (context) {
-                  return const ClientsDialog();
-                });
-              },
-            ),
-           
-            
-          ),
-        );
+    return Card(
+      color: Colors.blueGrey[50],
+      child: ListTile(
+        title: RichText(
+            text: TextSpan(
+          children: [
+            const TextSpan(
+                text: "Invoice to:  ",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                )),
+            TextSpan(
+                text: customerName,
+                style: const TextStyle(color: Colors.black)),
+          ],
+        )),
+        onTap: () {
+          showDialog(
+              context: context,
+              builder: (context) {
+                return const ClientsDialog();
+              });
+        },
+        // trailing: IconButton(
+        //   icon: const Icon(Icons.edit),
+        //   onPressed: () {
+        //     showDialog(context: context, builder: (context) {
+        //       return const ClientsDialog();
+        //     });
+        //   },
+        // ),
+      ),
+    );
   }
 }

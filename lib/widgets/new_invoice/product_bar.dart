@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:invoice_app_flutter/views/products/products_list.dart';
 
 class ProductBar extends ConsumerWidget {
   const ProductBar({super.key});
@@ -7,18 +8,25 @@ class ProductBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return  Card(
-          color: Colors.blueGrey[200],
+          color: Colors.blueGrey[50],
           child: Column(
             children: [
               ListTile(
                 
                 title: ListTile(
                   title: Text('Add product'),
-                  onTap: () => print('Choose the product'),),
+                  onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return const ProductsList();
+                    },
+                    );
+                },),
                 trailing: Text('1 x 0.00'), 
-                onTap: () {
-                  print('Whole tile clicked');
-                },
+                // onTap: () {
+                //   print('Whole tile clicked');
+                // },
               ),
               Divider(
                 color: Colors.grey.shade600,

@@ -10,7 +10,7 @@ class NumberBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-          color: Colors.blueGrey[200],
+          color: Colors.blueGrey[50],
           child: ListTile(
             title: Text(invoiceNumber,
                 style: const TextStyle(
