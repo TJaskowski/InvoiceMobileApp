@@ -25,13 +25,9 @@ class ProductsList extends ConsumerWidget {
               showDialog(
                     context: context,
                     builder: (context) {
-                      return const QuantityCounterDialog();
-                      
+                      return QuantityCounterDialog(product: product);
                     },
                     );
-              print("product tapped");
-            //  Navigator.of(context).pop();
-              // TODO after selecting a product, you can set the quantity 
             },
           ),
         );

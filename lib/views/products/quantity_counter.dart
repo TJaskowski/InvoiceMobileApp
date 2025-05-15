@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:invoice_app_flutter/models/product.dart';
+import 'package:invoice_app_flutter/providers/product_provider.dart';
 
-final quantityProvider = StateProvider<int>((ref) => 1); // TODO add quantity to some other provider
+
 
 class QuantityCounterDialog extends ConsumerStatefulWidget {
-  const QuantityCounterDialog({super.key});
+  final Product product;
+  const QuantityCounterDialog({super.key, required this.product});
 
   @override
   ConsumerState<QuantityCounterDialog> createState() => _QuantityCounterDialogState();
@@ -16,7 +19,7 @@ class _QuantityCounterDialogState extends ConsumerState<QuantityCounterDialog> {
   @override
   void initState() {
     super.initState();
-    _quantityController.text = ref.read(quantityProvider).toString();
+    _quantityController.text = '1'; 
   }
 
   @override
@@ -28,7 +31,11 @@ class _QuantityCounterDialogState extends ConsumerState<QuantityCounterDialog> {
   void saveQuantity() {
     final int? quantity = int.tryParse(_quantityController.text);
     if (quantity != null && quantity > 0) {
-      ref.read(quantityProvider.notifier).state = quantity;
+      ref.read(selectedProductsProvider.notifier).addProduct(
+        widget.product,
+        quantity,
+      );
+      ref.read(summaryProvider.notifier).setSubtotal( widget.product.netPrice * quantity);
       Navigator.of(context).pop();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
