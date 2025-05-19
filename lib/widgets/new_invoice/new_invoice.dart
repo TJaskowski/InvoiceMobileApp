@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:invoice_app_flutter/providers/client_provider.dart';
+import 'package:invoice_app_flutter/providers/product_provider.dart';
 import 'package:invoice_app_flutter/widgets/new_invoice/customer_bar.dart';
 import 'package:invoice_app_flutter/widgets/new_invoice/number_bar.dart';
 import 'package:invoice_app_flutter/providers/invoice_provider.dart';
@@ -14,18 +15,46 @@ class NewInvoice extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     final invoiceNumber = ref.watch(invoiceProvider).invoiceNumber;
     final invoiceDate = ref.watch(invoiceProvider).invoiceDate;
-    final customer = ref.watch(clientProvider); 
-   // final customer =  ref.watch(invoiceProvider).client ;
+    final customer = ref.watch(clientProvider);
+    final summary = ref.watch(summaryProvider);
+    // final customer =  ref.watch(invoiceProvider).client ;
     return ListView(
       children: [
         NumberBar(invoiceNumber: invoiceNumber, invoiceDate: invoiceDate),
-        CustomerBar(customerName: customer.name),//TODO: send the client name from the provider 
+        CustomerBar(
+            customerName:
+                customer.name), //TODO: send the client name from the provider
         // to navigate to client page use: Navigator.pushNamed(context, '/clients');
         ProductBar(),
         SummaryBar(),
+        summary.tax > 0
+            ? FloatingActionButton(
+                child: Wrap(
+                  children: [
+                    Text('Delete tax'),
+                    SizedBox(width: 10),
+                    Icon(Icons.delete),
+                  ],
+                ),
+                onPressed: () {
+                  ref.read(summaryProvider.notifier).setTax(0);
+                })
+            : Container(),
+        summary.discount > 0
+            ? FloatingActionButton(
+                child: Wrap(
+                  children: [
+                    Text('Delete discount'),
+                    SizedBox(width: 10),
+                    Icon(Icons.delete),
+                  ],
+                ),
+                onPressed: () {
+                  ref.read(summaryProvider.notifier).setDiscount(0);
+                })
+            : Container(),
         // Card(
         //   color: Colors.blueGrey[200],
         //   child: ListTile(
@@ -45,7 +74,7 @@ class NewInvoice extends ConsumerWidget {
         //     trailing: Checkbox(
         //         value: false,
         //         onChanged: (value) {
-          
+
         //           print('Checkbox clicked');
         //         }),
         //     onTap: () {
