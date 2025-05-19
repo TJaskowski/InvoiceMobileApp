@@ -28,8 +28,19 @@ class ProductBar extends ConsumerWidget {
               ),
               ...selectedProducts.map((product) {
                 return ListTile(
-                  title: Text(product.product.name),
+                  title: Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          ref.read(selectedProductsProvider.notifier).removeProduct(product);
+                        },
+                      ),
+                      Text(product.product.name),
+                    ],
+                  ),
                   trailing: Text('${product.product.netPrice * product.quantity} €'),
+                  
                 );
               }),
               Divider(
