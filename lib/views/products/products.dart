@@ -35,6 +35,7 @@ class Products extends ConsumerWidget {
               icon: const Icon(Icons.delete),
               onPressed: () {
                 ref.read(productProvider.notifier).removeProduct(product);
+        
               },
             ),
           );

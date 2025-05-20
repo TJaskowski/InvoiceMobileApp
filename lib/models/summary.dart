@@ -8,11 +8,6 @@ class Summary {
     required this.tax,
     required this.discount,
   });
-  double get total {
-    final discountAmount = (subtotal * discount) / 100;
-    final taxAmount = (subtotal - discountAmount) * (tax / 100);
-    return subtotal - discountAmount + taxAmount;
-  }
 
   Summary copyWith({
     double? subtotal,

@@ -25,7 +25,7 @@ class _DiscountDialogState extends ConsumerState<DiscountDialog> {
     super.dispose();
   }
 
-  void saveDiscount() {
+  void saveDiscount() { // TODO try to separate the save function from the dialog
     final value = double.tryParse(_controller.text);
     if (value != null && value >= 0) {
       ref.read(summaryProvider.notifier).setDiscount(value);

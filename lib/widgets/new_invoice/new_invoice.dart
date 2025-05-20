@@ -55,33 +55,7 @@ class NewInvoice extends ConsumerWidget {
                   ref.read(summaryProvider.notifier).setDiscount(0);
                 })
             : Container(),
-        // Card(
-        //   color: Colors.blueGrey[200],
-        //   child: ListTile(
-        //     leading: IconButton(
-        //       icon: Icon(Icons.monetization_on),
-        //       onPressed: () {
-        //         print('Money icon clicked');
-        //       },
-        //     ),
-        //     title: Text('INVNR002'),
-        //     subtitle: ListTile(
-        //       title: Text('Client name'),
-        //       onTap: () {
-        //         print('Client name clicked');
-        //       },
-        //     ),
-        //     trailing: Checkbox(
-        //         value: false,
-        //         onChanged: (value) {
 
-        //           print('Checkbox clicked');
-        //         }),
-        //     onTap: () {
-        //       print('Whole tile clicked');
-        //     },
-        //   ),
-        // )
       ],
     );
   }

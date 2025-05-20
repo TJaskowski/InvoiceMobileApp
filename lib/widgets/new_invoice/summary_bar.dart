@@ -10,6 +10,7 @@ class SummaryBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final summary = ref.watch(summaryProvider);
+    final total = ref.watch(totalProvider);
     return Card(
       color: Colors.blueGrey[50],
       child: Column(
@@ -41,11 +42,11 @@ class SummaryBar extends ConsumerWidget {
             endIndent: 10,
           ),
           ListTile(
-            title: ListTile(
+            title: const ListTile(
                 title: Text('Total due',
                     style: TextStyle(fontWeight: FontWeight.bold))),
-            trailing: Text('${summary.total}',
-                style: TextStyle(fontWeight: FontWeight.bold)),
+            trailing: Text('${total.toStringAsFixed(2)} €',
+                style: const TextStyle(fontWeight: FontWeight.bold)),
           ),
         ],
       ),

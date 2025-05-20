@@ -23,7 +23,15 @@ final subtotalProvider = Provider<double>((ref) {
   );
 });
 
+final totalProvider = Provider<double>((ref) {
+  final subtotal = ref.watch(subtotalProvider);
+  final tax = ref.watch(summaryProvider).tax;
+  final discount = ref.watch(summaryProvider).discount;
+  final discountAmount = (subtotal * discount) / 100;
+  final taxAmount = (subtotal - discountAmount) * (tax / 100);
+  return subtotal - discountAmount + taxAmount;
+});
+
 final summaryProvider = NotifierProvider<SummaryNotifier, Summary>(
   () => SummaryNotifier(),
 );
-//TODO add provider to handle total amount

@@ -12,10 +12,10 @@ class SummaryNotifier extends Notifier<Summary> {
     );
   }
 
-
   void setSubtotal(double value) {
-    state = state.copyWith(subtotal: value);
+    state = state.copyWith(subtotal: (state.subtotal + value));
   }
+
 
   void setTax(double value) {
     state = state.copyWith(tax: value);

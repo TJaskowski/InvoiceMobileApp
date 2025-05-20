@@ -28,14 +28,15 @@ class _QuantityCounterDialogState extends ConsumerState<QuantityCounterDialog> {
     super.dispose();
   }
 
-  void saveQuantity() {
+  void saveQuantity() { // TODO try to separate the save function from the dialog
     final int? quantity = int.tryParse(_quantityController.text);
     if (quantity != null && quantity > 0) {
       ref.read(selectedProductsProvider.notifier).addProduct(
         widget.product,
         quantity,
       );
-      ref.read(summaryProvider.notifier).setSubtotal( widget.product.netPrice * quantity);
+      final double subtotal = widget.product.netPrice * quantity;
+      ref.read(summaryProvider.notifier).setSubtotal(subtotal);
       Navigator.of(context).pop();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
