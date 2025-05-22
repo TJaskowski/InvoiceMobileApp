@@ -26,8 +26,47 @@ class PdfInvoice extends ConsumerWidget {
                       'Invoice Date: ${invoice.invoiceDate.day}/${invoice.invoiceDate.month}/${invoice.invoiceDate.year}'),
                 ]),
                 pw.SizedBox(height: 20),
-                //pw.Text('Customer Name: ${invoice.client?.name ?? 'Customer not selected' }'), // TODO make it dynamic
-              ],
+                pw.Row(
+                  mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+                  children: [
+                         pw.Column(
+                  children: [
+                    pw.Text('Buyer:'),
+                    if (invoice.client != null) ...[
+                      pw.Text(' ${invoice.client!.name}'),
+                      pw.Text(' ${invoice.client!.address}'),
+                      pw.Text('${invoice.client!.email}'),
+                    ]
+                    else ...[
+                      pw.Text('No client selected'),
+                    ],
+                  ],
+                ),
+                pw.SizedBox(width: 20),
+                pw.Column(
+                  children: [
+                    pw.Text('Seller:'),
+                    pw.Text('Your Company Name'),
+                    pw.Text('Your Company Address'),
+                    pw.Text('Your Company Email'),
+                  ]
+                ),],
+                ),
+                       pw.Column(
+                  crossAxisAlignment: pw.CrossAxisAlignment.start,
+                  children: [
+                    pw.Text('Products:'),
+                    pw.ListView.builder(
+                      itemCount: invoice.products.length,
+                      itemBuilder: (context, index) {
+                        final product = invoice.products[index];
+                        return pw.Text(
+                            '${product.name} - ${product.netPrice}EUR');
+                      },
+                    ),
+                  ]
+                ),
+                ],
             );
           },
         ),

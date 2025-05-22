@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:invoice_app_flutter/models/product.dart';
+import 'package:invoice_app_flutter/providers/invoice_provider.dart';
 import 'package:invoice_app_flutter/providers/product_provider.dart';
 
 
@@ -34,6 +35,9 @@ class _QuantityCounterDialogState extends ConsumerState<QuantityCounterDialog> {
       ref.read(selectedProductsProvider.notifier).addProduct(
         widget.product,
         quantity,
+      );
+      ref.read(invoiceProvider.notifier).addProduct(
+        widget.product,
       );
       final double subtotal = widget.product.netPrice * quantity;
       ref.read(summaryProvider.notifier).setSubtotal(subtotal);

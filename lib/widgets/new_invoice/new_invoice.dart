@@ -29,33 +29,53 @@ class NewInvoice extends ConsumerWidget {
         // to navigate to client page use: Navigator.pushNamed(context, '/clients');
         ProductBar(),
         SummaryBar(),
-        summary.tax > 0
-            ? FloatingActionButton(
-                child: Wrap(
-                  children: [
-                    Text('Delete tax'),
-                    SizedBox(width: 10),
-                    Icon(Icons.delete),
+        Row(
+           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+                  FloatingActionButton(// Button to show data on console
+            child: Text('show data'),
+            onPressed: () {
+              print(ref.read(invoiceProvider).invoiceNumber);
+              print(ref.read(invoiceProvider).invoiceDate);
+              print(ref.read(invoiceProvider).client?.name);
+              print(ref.read(invoiceProvider).products
+                  .map((e) => e.name)
+                  .toList());
+          }
+                   )  ,
+        Expanded(
+          child: summary.tax > 0
+              ? FloatingActionButton(
+                  child: Wrap(
+                    children: [
+                      Text('Delete tax'),
+                      SizedBox(width: 10),
+                      Icon(Icons.delete),
+                    ],
+                  ),
+                  onPressed: () {
+                    ref.read(summaryProvider.notifier).setTax(0);
+                  })
+              : Container(),
+        ),
+    
+        Expanded(
+          child: summary.discount > 0
+              ? FloatingActionButton(
+                  child: Wrap(
+                    children: [
+                      Text('Delete discount'),
+                      SizedBox(width: 10),
+                      Icon(Icons.delete),
+                    ],
+                  ),
+                  onPressed: () {
+                    ref.read(summaryProvider.notifier).setDiscount(0);
+                  })
+              : Container(),
+        ),
                   ],
-                ),
-                onPressed: () {
-                  ref.read(summaryProvider.notifier).setTax(0);
-                })
-            : Container(),
-        summary.discount > 0
-            ? FloatingActionButton(
-                child: Wrap(
-                  children: [
-                    Text('Delete discount'),
-                    SizedBox(width: 10),
-                    Icon(Icons.delete),
-                  ],
-                ),
-                onPressed: () {
-                  ref.read(summaryProvider.notifier).setDiscount(0);
-                })
-            : Container(),
-
+    ),
       ],
     );
   }

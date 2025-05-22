@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:invoice_app_flutter/mock/clients_list.dart';
-import 'package:invoice_app_flutter/models/client.dart';
 import 'package:invoice_app_flutter/providers/client_provider.dart';
+import 'package:invoice_app_flutter/providers/invoice_provider.dart';
 
 class ClientsList extends ConsumerWidget {
   const ClientsList({super.key});
@@ -24,10 +24,9 @@ class ClientsList extends ConsumerWidget {
             subtitle: Text(client.name),
             trailing: Text(client.taxId ?? "No tax ID"),
             onTap: () {
-              ref.read(clientProvider.notifier).setClient(client);
+              ref.read(clientProvider.notifier).setClient(client); // TODO: which provider to use?
+              ref.read(invoiceProvider.notifier).setClient(client);
               Navigator.of(context).pop();
-              print(ref.read(clientProvider).name );
-              // Handle client tap
             },
           ),
         );
