@@ -19,6 +19,7 @@ class NewInvoice extends ConsumerWidget {
     final invoiceDate = ref.watch(invoiceProvider).invoiceDate;
     final customer = ref.watch(clientProvider);
     final summary = ref.watch(summaryProvider);
+    final invoiceList = ref.watch(invoiceListProvider);
     // final customer =  ref.watch(invoiceProvider).client ;
     return ListView(
       children: [
@@ -76,6 +77,13 @@ class NewInvoice extends ConsumerWidget {
         ),
                   ],
     ),
+    SizedBox(height: 10,),
+    FloatingActionButton( //TODO: this button can't be floating, it should be a normal button
+      child: Text('Add invoice'),
+      onPressed: (){
+      invoiceList.add(ref.read(invoiceProvider));
+
+    })
       ],
     );
   }

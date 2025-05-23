@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:invoice_app_flutter/views/invoices/all_invoices.dart';
 import 'package:invoice_app_flutter/widgets/custom_appbar.dart';
 import 'package:invoice_app_flutter/widgets/custom_button.dart';
 
@@ -38,7 +39,7 @@ class InvoicesView extends StatelessWidget {
         ),
         body: TabBarView(children: 
           [
-            Center(child: Text('List of all invoices')),
+            AllInvoices(),
             Center(child: Text('List of outstanding invoices')),
             Center(child: Text('List of paid invoices')),
           ],
