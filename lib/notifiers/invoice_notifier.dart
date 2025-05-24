@@ -7,7 +7,7 @@ class InvoiceNotifier extends Notifier<Invoice> {
   
   @override
   Invoice build() {
-    return Invoice(invoiceNumber: 'INV000', invoiceDate: DateTime.now(), client: null, products: []);
+    return Invoice(invoiceNumber: 'INV000', invoiceDate: DateTime.now(), products: []);
   }
 
   void setInvoiceNumber(String invoiceNumber) {
@@ -23,8 +23,18 @@ class InvoiceNotifier extends Notifier<Invoice> {
   void setClient(Client client) {
     state = state.copyWith(client: client);
   }
+
   void addProduct(Product product) {
     state = state.copyWith(products: [...state.products, product]);
   }
+
+  void setTotal(double total) {
+    state = state.copyWith(total: total);
+  }
+
+  void clearInvoice() {
+    state = Invoice(invoiceNumber: 'INV000', invoiceDate: DateTime.now(), client: null, products: []);
+  }
+
 
 }

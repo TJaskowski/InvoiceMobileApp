@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:invoice_app_flutter/providers/product_provider.dart';
 import 'package:invoice_app_flutter/widgets/custom_appbar.dart';
-import 'package:invoice_app_flutter/widgets/custom_button.dart';
+import 'package:invoice_app_flutter/widgets/custom_add_button.dart';
 
 class Products extends ConsumerWidget {
   const Products({super.key});
@@ -40,7 +40,7 @@ class Products extends ConsumerWidget {
             ),
           );
         }),
-      floatingActionButton: CustomButton(onPressed: () {
+      floatingActionButton: CustomAddButton(onPressed: () {
         Navigator.pushNamed(context, '/add_product');
       }),
     );

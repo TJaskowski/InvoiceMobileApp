@@ -24,4 +24,7 @@ class SummaryNotifier extends Notifier<Summary> {
   void setDiscount(double value) {
     state = state.copyWith(discount: value);
   }
+  void clearSummary() {
+    state = Summary(subtotal: 0.0, tax: 0.0, discount: 0.0);
+  }
 }

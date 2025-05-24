@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_app_flutter/views/invoices/all_invoices.dart';
 import 'package:invoice_app_flutter/widgets/custom_appbar.dart';
-import 'package:invoice_app_flutter/widgets/custom_button.dart';
+import 'package:invoice_app_flutter/widgets/custom_add_button.dart';
 
 class InvoicesView extends StatelessWidget {
   const InvoicesView({super.key});
@@ -44,7 +44,7 @@ class InvoicesView extends StatelessWidget {
             Center(child: Text('List of paid invoices')),
           ],
         ),
-        floatingActionButton: CustomButton(onPressed: () {
+        floatingActionButton: CustomAddButton(onPressed: () {
           Navigator.pushNamed(context, '/add_invoice');
         },
         ),

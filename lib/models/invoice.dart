@@ -6,12 +6,14 @@ class Invoice {
   final DateTime invoiceDate;
   final Client? client;
   final List<Product> products;
+  final double? total;
 
   Invoice({
     required this.invoiceNumber,
     required this.invoiceDate,
     this.client,
     this.products = const [],
+    this.total ,
   });
 
   Invoice copyWith({
@@ -19,12 +21,14 @@ class Invoice {
     DateTime? invoiceDate,
     Client? client,
     List<Product>? products,
+    double? total,
   }) {
     return Invoice(
       invoiceNumber: invoiceNumber ?? this.invoiceNumber,
       invoiceDate: invoiceDate ?? this.invoiceDate,
       client: client ?? this.client,
       products: products ?? this.products,
+      total: total ?? this.total,
     );
   }
 }

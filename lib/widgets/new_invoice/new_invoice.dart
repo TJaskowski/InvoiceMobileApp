@@ -33,7 +33,7 @@ class NewInvoice extends ConsumerWidget {
         Row(
            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-                  FloatingActionButton(// Button to show data on console
+                  OutlinedButton(// Button to show data on console
             child: Text('show data'),
             onPressed: () {
               print(ref.read(invoiceProvider).invoiceNumber);
@@ -46,7 +46,7 @@ class NewInvoice extends ConsumerWidget {
                    )  ,
         Expanded(
           child: summary.tax > 0
-              ? FloatingActionButton(
+              ? OutlinedButton(
                   child: Wrap(
                     children: [
                       Text('Delete tax'),
@@ -62,7 +62,7 @@ class NewInvoice extends ConsumerWidget {
     
         Expanded(
           child: summary.discount > 0
-              ? FloatingActionButton(
+              ? OutlinedButton(
                   child: Wrap(
                     children: [
                       Text('Delete discount'),
@@ -82,8 +82,7 @@ class NewInvoice extends ConsumerWidget {
       child: Text('Add invoice'),
       onPressed: (){
       invoiceList.add(ref.read(invoiceProvider));
-
-    })
+      ref.read(invoiceProvider.notifier).clearInvoice();})
       ],
     );
   }

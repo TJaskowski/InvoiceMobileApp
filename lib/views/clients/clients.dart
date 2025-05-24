@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_app_flutter/views/clients/clients_listview.dart';
 import 'package:invoice_app_flutter/widgets/custom_appbar.dart';
-import 'package:invoice_app_flutter/widgets/custom_button.dart';
+import 'package:invoice_app_flutter/widgets/custom_add_button.dart';
 
 class Clients extends StatelessWidget {
   
@@ -27,7 +27,7 @@ class Clients extends StatelessWidget {
           title: 'Clients',
         ),
         body: ClientsList(),
-        floatingActionButton: CustomButton(onPressed: () {
+        floatingActionButton: CustomAddButton(onPressed: () {
           Navigator.pushNamed(context, '/add_client');
         },
         ),
